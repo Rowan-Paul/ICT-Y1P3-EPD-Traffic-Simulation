@@ -8,28 +8,28 @@ const int RED_LIGHT2_PIN = 11;
 
 boolean checkTrafficLightsRed() {
   if (trafficLight1 == "RED" && trafficLight2 == "RED") {
-    Serial.println("It's safe");
     return true;
   } else {
-    Serial.println("Someone else if already going");
     return false;
   }
 }
 
 void setTrafficLightGreen(String trafficLight) {
-  // set light to green
-  if (trafficLight == "trafficLight1") {
-    ledControlSetLedOff(RED_LIGHT1_PIN);
-    ledControlSetLedOff(ORANGE_LIGHT1_PIN);
+  if (checkTrafficLightsRed()) {
+    // set light to green
+    if (trafficLight == "trafficLight1") {
+      ledControlSetLedOff(RED_LIGHT1_PIN);
+      ledControlSetLedOff(ORANGE_LIGHT1_PIN);
 
-    ledControlSetLedOn(GREEN_LIGHT1_PIN);
-    trafficLight1 = "GREEN";
-  } else if (trafficLight == "trafficLight2") {
-    ledControlSetLedOff(RED_LIGHT2_PIN);
-    ledControlSetLedOff(ORANGE_LIGHT2_PIN);
+      ledControlSetLedOn(GREEN_LIGHT1_PIN);
+      trafficLight1 = "GREEN";
+    } else if (trafficLight == "trafficLight2") {
+      ledControlSetLedOff(RED_LIGHT2_PIN);
+      ledControlSetLedOff(ORANGE_LIGHT2_PIN);
 
-    ledControlSetLedOn(GREEN_LIGHT2_PIN);
-    trafficLight2 = "GREEN";
+      ledControlSetLedOn(GREEN_LIGHT2_PIN);
+      trafficLight2 = "GREEN";
+    }
   }
 }
 
