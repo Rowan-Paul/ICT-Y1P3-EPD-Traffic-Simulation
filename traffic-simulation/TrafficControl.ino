@@ -15,7 +15,6 @@ boolean checkTrafficLightsRed() {
 }
 
 void setTrafficLightGreen(String trafficLight) {
-  if (checkTrafficLightsRed()) {
     // set light to green
     if (trafficLight == "trafficLight1") {
       ledControlSetLedOff(RED_LIGHT1_PIN);
@@ -30,7 +29,6 @@ void setTrafficLightGreen(String trafficLight) {
       ledControlSetLedOn(GREEN_LIGHT2_PIN);
       trafficLight2 = "GREEN";
     }
-  }
 }
 
 void setTrafficLightOrange(String trafficLight) {
