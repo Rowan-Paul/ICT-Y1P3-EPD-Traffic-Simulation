@@ -39,11 +39,8 @@ void stateMachineSetup() {
 }
 
 void stateMachineLoop() {
-  if(ldrGetValue() > 400) {
-    currentState = 1;
-  } else if (ldrGetValue() < 200) {
-    currentState = 2;
-  }
+  Serial.println(currentState);
+  Serial.println(ldrGetValue());
 
   switch (currentState) {
     case 1:
@@ -66,6 +63,10 @@ void stateMachineLoop() {
         digitalWrite(9, ledState);
         digitalWrite(12, ledState);
       }
+
+      if (ldrGetValue() < 200) {
+        currentState = 2;
+      }
       break;
     case 2:
       servoWrite(180);
@@ -79,6 +80,11 @@ void stateMachineLoop() {
       pedestrianCrossing();
       trafficLight1();
       trafficLight2();
+
+      if (ldrGetValue() > 300) {
+        currentState = 1;
+        ledControlSetAllLedsOff();
+      }
   }
 }
 
