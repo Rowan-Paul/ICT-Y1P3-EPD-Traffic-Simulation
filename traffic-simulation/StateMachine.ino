@@ -39,9 +39,6 @@ void stateMachineSetup() {
 }
 
 void stateMachineLoop() {
-  Serial.println(currentState);
-  Serial.println(ldrGetValue());
-
   switch (currentState) {
     case 1:
       servoWrite(180);
